@@ -36,6 +36,7 @@ class DailyLog(models.Model):
 		return self.month
 
 class Device(models.Model):
+	deviceStatus=models.BooleanField(default=False)
 	deviceid=models.IntegerField(unique=True)
 	devicerating=models.CharField(default="0 W",max_length=255)
 	user=models.OneToOneField(User,on_delete=models.CASCADE)

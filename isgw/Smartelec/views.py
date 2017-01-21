@@ -4,6 +4,7 @@ import requests
 import json
 from random import randint
 import os
+import bs4
 
 
 # Create your views here.
@@ -18,8 +19,11 @@ import sqlite3
 import io
 import csv
 
-
-
+def exactPrice(request):
+    r=requests.get("http://www.vidyutpravah.in/")
+    soup=bs4.BeautifulSoup(r.text,"html.parser")
+    price=soup.find_all("span",class_="counter")[12].text
+    return HttpResponse(json.dumps({"price":price},indent=4))
 
 
 
