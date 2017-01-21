@@ -28,6 +28,9 @@ class DailyLog(models.Model):
 	day=models.IntegerField(default=0,unique=True)
 	month=models.IntegerField(default=0)
 	year=models.IntegerField(default=0)
+<<<<<<< HEAD
+	
+=======
 	predicted_low=models.IntegerField(default=0)
 	current_rate=models.IntegerField(default=0)
 	def __unicode__(self):
@@ -40,4 +43,5 @@ class Device(models.Model):
 	def __unicode__(self):
 		return self.deviceName	
 
+>>>>>>> edb5d0b300c9bc7e4334856d5cddc09c752ebca7
 
