@@ -9,4 +9,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^deviceinfo$', 'Smartelec.views.deviceInfo',name="deviceInfo"),
     url(r'^userinfo$', 'Smartelec.views.userInfo',name="userInfo"),
+    url(r'^weather$', 'Smartelec.views.datagerator',name="datagenerator"),
+    url(r'^rate$', 'Smartelec.views.realgenerator',name="realgenerator"),
+    url(r'^ideal$', 'Smartelec.views.ideal_rate',name="realgenerator1"),
 )
