@@ -117,7 +117,7 @@ def  realgenerator(request):
 
 def ideal_rate(request):
 
-	os.chdir(r'/Users/nipunarora/Desktop/hackathon/appathon/isgw/Smartelec')
+	os.chdir(r'/usr/desktop/django/isgw/Smartelec')
 	dataset = pd.read_csv('weather.csv')
 	X = dataset.iloc[:, :-1].values
 	y = dataset.iloc[:,3].values
