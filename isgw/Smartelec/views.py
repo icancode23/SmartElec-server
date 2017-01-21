@@ -103,13 +103,13 @@ def  realgenerator(request):
 
 
 
-def ideal_rate(request):
+def ideal_surplus2():
 
-	os.chdir(r'/home/vishrut/Desktop/server/isgw/Smartelec')
+	os.chdir(r'/home/vishrut/Desktop/final/server/isgw/Smartelec')
 	dataset = pd.read_csv('weather.csv')
 	X = dataset.iloc[:, :-1].values
 	y = dataset.iloc[:,3].values
-	print y.shape
+	print y
 	# y = numpy.reshape(y, (19,1))
 	# X = numpy.append(arr = numpy.ones((19,1)).astype(int)  , values = X , axis = 1)
 	# print y.shape
@@ -163,11 +163,71 @@ def ideal_rate(request):
 	# joblib.dump(regressor2, 'filename.pkl') 
 
 
-	return  HttpResponse(a)
+	return  a
+
+def ideal_rate(request):
+
+	X = ideal_rate2()
+
+	return HttpResponse(X)
 
 	
 
 
+def exact(request):
+
+	os.chdir(r'/home/vishrut/Desktop/server/isgw/Smartelec')
+	dataset = pd.read_csv('testit.csv')
+	X = dataset.iloc[:, :-1].values
+	y = dataset.iloc[:,1].values
+	print y.shape
+	# y = numpy.reshape(y, (19,1))
+	# X = numpy.append(arr = numpy.ones((19,1)).astype(int)  , values = X , axis = 1)
+	# print y.shape
+	# y = numpy.append(arr = numpy.ones((19,1)).astype(int)  , values = y , axis = 1)
+
+	
+
+	from sklearn.cross_validation import train_test_split
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+	from sklearn.linear_model import LinearRegression
+	# print X_train.shape
+	# print y_train
+	regressor = LinearRegression()
+	regressor.fit(X_train, y_train)
+
+	
+	# joblib.dump(regressor, 'filename.pkl') 
+	# regressor2 = joblib.load('filename.pkl')
+
+	z = datagerator2()
+	print z
+	f = {}
+	m =[]
+	q = 0
+	
+	a = regressor.predict(z[0])
+	# X_train = numpy.append(arr = z[0] ,values = X_train )
+	# y_train = numpy.append(arr = a , values = y_train)
+	print(a)
+	w = numpy.concatenate((z[0], a.T))
+	print w
+	for i in w:
+
+		print i
+		
+		f["%d"%q] = i
+		q = q+1
+		# m.append(f)
+		# print f
+	print f	
+
+	b = ['0','1','2','3']
+	m.append(f)
+	print m	
+	csvAdd(m,b)
+
+	return a
 
 
 
