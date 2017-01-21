@@ -28,6 +28,8 @@ class DailyLog(models.Model):
 	day=models.IntegerField(default=0,unique=True)
 	month=models.IntegerField(default=0)
 	year=models.IntegerField(default=0)
+
+	
 	predicted_low=models.IntegerField(default=0)
 	current_rate=models.IntegerField(default=0)
 	def __unicode__(self):
@@ -39,5 +41,6 @@ class Device(models.Model):
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	def __unicode__(self):
 		return self.deviceName	
+
 
 

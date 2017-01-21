@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/Users/nipunarora/Desktop/hackathon/appathon/env/bin/python
+=======
+#!/home/vishrut/Desktop/codingpractice/linkedin/env/bin/python
+>>>>>>> 372453d2999a244ac536ba8d5ba0e6dca286fb87
 # Copyright (c) 2005-2012 Stephen John Machin, Lingfo Pty Ltd
 # This script is part of the xlrd package, which is released under a
 # BSD-style licence.
