@@ -3,14 +3,14 @@ from django.db import models
 class User(models.Model):
 	identifier=models.IntegerField(default=0,unique=True)
 	name=models.CharField(max_length=256)
-	creditUnits=identifier=models.IntegerField(default=0)
+	creditUnits=models.IntegerField(default=0)
 	def __unicode__(self):
 	 	return self.name
 
 class UserTransaction(models.Model):
 	transactionid=models.IntegerField(default=0,unique=True)
-	transactionUnitAmount=model.IntegerField(default=0)
-	numberTransactionUnits=model.IntegerField(default=0)
+	transactionUnitAmount=models.IntegerField(default=0)
+	numberTransactionUnits=models.IntegerField(default=0)
 	transactionUserId=models.IntegerField(default=0)
 	user=models.OneToOneField(User,  on_delete=models.CASCADE)
 	def __unicode__(self):
@@ -21,12 +21,23 @@ class UserTask(models.Model):
 	taskHour=models.IntegerField(default=0)
 	taskMinutes=models.IntegerField(default=0)
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
+	def __unicode__(self):
+		return self.taskId
 
-class Dailylog(models.Model):
+class DailyLog(models.Model):
 	day=models.IntegerField(default=0,unique=True)
 	month=models.IntegerField(default=0)
 	year=models.IntegerField(default=0)
 	predicted_low=models.IntegerField(default=0)
 	current_rate=models.IntegerField(default=0)
-	
+	def __unicode__(self):
+		return self.month
+
+class Device(models.Model):
+	deviceid=models.IntegerField(unique=True)
+	devicerating=models.CharField(default="0 W",max_length=255)
+	user=models.OneToOneField(User,on_delete=models.CASCADE)
+	def __unicode__(self):
+		return self.deviceName	
+
 

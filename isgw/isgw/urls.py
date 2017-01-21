@@ -7,4 +7,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^deviceinfo$', 'Smartelec.views.deviceInfo',name="deviceInfo"),
+    url(r'^userinfo$', 'Smartelec.views.userInfo',name="userInfo"),
 )
