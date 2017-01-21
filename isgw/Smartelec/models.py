@@ -41,7 +41,7 @@ class Device(models.Model):
 	devicerating=models.CharField(default="0 W",max_length=255)
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	def __unicode__(self):
-		return self.deviceName	
+		return self.devicerating	
 
 
 
