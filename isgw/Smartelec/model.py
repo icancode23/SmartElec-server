@@ -11,9 +11,9 @@ from sklearn.externals import joblib
 
 
 # Importing the dataset
-dataset = pd.read_csv('weather.csv')
+dataset = pd.read_csv('testit.csv')
 X = dataset.iloc[:, :-1].values
-y = dataset.iloc[:, 3].values
+y = dataset.iloc[:,1].values
 
 
 

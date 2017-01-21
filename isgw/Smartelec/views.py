@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-<<<<<<< HEAD
 import requests
 import json
 from random import randint
@@ -139,49 +138,18 @@ def ideal_surplus2():
 	a = regressor.predict(z[0])
 	# X_train = numpy.append(arr = z[0] ,values = X_train )
 	# y_train = numpy.append(arr = a , values = y_train)
-	print(a)
-	w = numpy.concatenate((z[0], a.T))
-	print w
-	for i in w:
 
-		print i
-		
-		f["%d"%q] = i
-		q = q+1
-		# m.append(f)
-		# print f
-	print f	
-
-	b = ['0','1','2','3']
-	m.append(f)
-	print m	
-	csvAdd(m,b)
-
-
-
-
-
-	# joblib.dump(regressor2, 'filename.pkl') 
 
 
 	return  a
 
-def ideal_rate(request):
+def ideal_surplus(request):
 
-	X = ideal_rate2()
-
-	return HttpResponse(X)
-
-	
-
-
-def exact(request):
-
-	os.chdir(r'/home/vishrut/Desktop/server/isgw/Smartelec')
-	dataset = pd.read_csv('testit.csv')
+	os.chdir(r'/home/vishrut/Desktop/final/server/isgw/Smartelec')
+	dataset = pd.read_csv('weather.csv')
 	X = dataset.iloc[:, :-1].values
-	y = dataset.iloc[:,1].values
-	print y.shape
+	y = dataset.iloc[:,3].values
+	print y
 	# y = numpy.reshape(y, (19,1))
 	# X = numpy.append(arr = numpy.ones((19,1)).astype(int)  , values = X , axis = 1)
 	# print y.shape
@@ -208,9 +176,8 @@ def exact(request):
 	q = 0
 	
 	a = regressor.predict(z[0])
-	# X_train = numpy.append(arr = z[0] ,values = X_train )
-	# y_train = numpy.append(arr = a , values = y_train)
-	print(a)
+
+	
 	w = numpy.concatenate((z[0], a.T))
 	print w
 	for i in w:
@@ -228,17 +195,79 @@ def exact(request):
 	print m	
 	csvAdd(m,b)
 
-	return a
+
+	return HttpResponse(a)
+
+	
+
+
+def exact(request):
+
+	os.chdir(r'/home/vishrut/Desktop/final/server/isgw/Smartelec')
+	dataset = pd.read_csv('testit.csv')
+	X = dataset.iloc[:,:-1].values
+	y = dataset.iloc[:,1].values
+	# y = numpy.reshape(y, (19,1))
+	# X = numpy.append(arr = numpy.ones((19,1)).astype(int)  , values = X , axis = 1)
+
+	# y = numpy.append(arr = numpy.ones((19,1)).astype(int)  , values = y , axis = 1)
+
+	
+
+	from sklearn.cross_validation import train_test_split
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+	from sklearn.linear_model import LinearRegression
+	# print "chal gaya"
+	X_train = numpy.reshape(X_train, (len(X_train),1))
+	# print X_train.shape
+	# print y_train
+	regressor = LinearRegression()
+	# y = numpy.reshape(y, (19,1))
+	regressor.fit(X_train, y_train)
+
+	
+	# joblib.dump(regressor, 'filename.pkl') 
+	# regressor2 = joblib.load('filename.pkl')
+
+	z = ideal_surplus2()
+	print z
+	f = {}
+	m =[]
+	q = 0
+	
+	a = regressor.predict(z)
+	# X_train = numpy.append(arr = z[0] ,values = X_train )
+	# y_train = numpy.append(arr = a , values = y_train)
+	print(a)
+
+	w = numpy.concatenate((z, a.T))
+	print w
+	for i in w:
+
+		print i
+		
+		f["%d"%q] = i
+		q = q+1
+		# m.append(f)
+		# print f
+	print f	
+
+	b = ['0','1']
+	m.append(f)
+	print m	
+	csvAdd(m,b)
+
+	return HttpResponse(a)
 
 
 
 def csvAdd(dict_data,columns):
     try:
-        with open('weather.csv', 'a') as csvfile:
+        with open('testit.csv', 'a') as csvfile:
             writer = csv.DictWriter(csvfile,fieldnames=columns)
             for data in dict_data:
                 writer.writerow(data)
-                print data
+                
 
 
 
@@ -249,7 +278,7 @@ def csvAdd(dict_data,columns):
         print e
 
 
-=======
+
 from Smartelec.models import Device,User,UserTransaction
 import json
 
@@ -267,6 +296,6 @@ def userInfo(request):
 	print user_object
 	output=json.dumps(user_object[0],indent=4)
 	return HttpResponse(output,content_type="application/json")
->>>>>>> edb5d0b300c9bc7e4334856d5cddc09c752ebca7
+
 
 
