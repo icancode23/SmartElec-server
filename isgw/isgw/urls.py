@@ -17,6 +17,6 @@ urlpatterns = patterns('',
     url(r'^deviceinfo$', 'Smartelec.views.deviceInfo',name="deviceInfo"),
     url(r'^userinfo$', 'Smartelec.views.userInfo',name="userInfo"),
 
-
+     url(r'^exactprice$', 'Smartelec.views.exactPrice',name="exactprice"),
     url(r'^exact$', 'Smartelec.views.exact',name="exact"),
 )
