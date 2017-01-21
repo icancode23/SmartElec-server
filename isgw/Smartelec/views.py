@@ -100,7 +100,7 @@ def  realgenerator(request):
 
 def ideal_surplus2():
 
-    os.chdir(r'/Users/nipunarora/Desktop/hackathon/appathon/isgw/Smartelec')
+    os.chdir(r'/usr/desktop/django/isgw/Smartelec')
     dataset = pd.read_csv('weather.csv')
     X = dataset.iloc[:, :-1].values
     y = dataset.iloc[:,3].values
@@ -140,7 +140,7 @@ def ideal_surplus2():
 
 def ideal_surplus(request):
 
-    os.chdir(r'/Users/nipunarora/Desktop/hackathon/appathon/isgw/Smartelec')
+    os.chdir(r'/usr/desktop/django/isgw/Smartelec')
     dataset = pd.read_csv('weather.csv')
     X = dataset.iloc[:, :-1].values
     y = dataset.iloc[:,3].values
@@ -198,7 +198,7 @@ def ideal_surplus(request):
 
 def exact(request):
 
-    os.chdir(r'/Users/nipunarora/Desktop/hackathon/appathon/isgw/Smartelec')
+    os.chdir(r'/usr/desktop/django/isgw/Smartelec')
     dataset = pd.read_csv('testit.csv')
     X = dataset.iloc[:,:-1].values
     y = dataset.iloc[:,1].values
