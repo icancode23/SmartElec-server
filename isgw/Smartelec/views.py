@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+<<<<<<< HEAD
 import requests
 import json
 from random import randint
@@ -248,5 +249,24 @@ def csvAdd(dict_data,columns):
         print e
 
 
+=======
+from Smartelec.models import Device,User,UserTransaction
+import json
+
+
+# Create your views here.
+
+def deviceInfo(request):
+	deviceId=request.GET.get("deviceId")
+
+	return HttpResponse("We will be up shortly...!")
+
+def userInfo(request):
+	username=request.GET.get("name")
+	user_object=User.objects.filter(name=username).values()
+	print user_object
+	output=json.dumps(user_object[0],indent=4)
+	return HttpResponse(output,content_type="application/json")
+>>>>>>> edb5d0b300c9bc7e4334856d5cddc09c752ebca7
 
 
